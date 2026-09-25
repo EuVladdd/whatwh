@@ -11,12 +11,7 @@ cd C:\printio.md
 node --env-file-if-exists=.env server.mjs
 ```
 
-Alternativ: dublu clic pe **START-PRINTIO.cmd**, sau `npm start` dacă ai npm. Păstrează terminalul deschis.
 
-- Magazin: http://localhost:3000
-- Admin: http://localhost:3000/admin
-- Parola inițială este generată aleatoriu la prima pornire în **data/admin-access.txt**. Acest fișier nu poate fi accesat prin site.
-- Pentru schimbarea parolei, copiază `.env.example` în `.env`, completează `ADMIN_PASSWORD` (minimum 12 caractere) și repornește serverul. După schimbare folosește parola nouă; fișierul inițial de acces nu se rescrie.
 
 ## Adăugarea produselor
 

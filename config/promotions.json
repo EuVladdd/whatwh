@@ -1,0 +1,4 @@
+{
+  "active":[],
+  "examples":[{"id":"hoodie-cap","enabled":false,"type":"gift","buy":{"product":"hoodie","quantity":1},"gift":{"product":"cap","quantity":1},"startsAt":null,"endsAt":null,"stackable":false}]
+}

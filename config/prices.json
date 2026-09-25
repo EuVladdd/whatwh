@@ -1,0 +1,63 @@
+{
+  "currency": "MDL",
+  "demo": true,
+  "base": {
+    "tshirt": 160,
+    "polo": 240,
+    "hoodie": 390,
+    "tote": 145,
+    "cap": 210,
+    "magnet": 55,
+    "sweater": 390,
+    "cap-white": 210
+  },
+  "text": {
+    "base": 35,
+    "perExtraTenCharacters": 8,
+    "sizeBands": [
+      {
+        "maxCm": 15,
+        "factor": 1
+      },
+      {
+        "maxCm": 25,
+        "factor": 1.35
+      },
+      {
+        "maxCm": 999,
+        "factor": 1.75
+      }
+    ]
+  },
+  "image": {
+    "base": 65,
+    "perSquareCm": 0.42
+  },
+  "quantityDiscounts": [
+    {
+      "min": 10,
+      "percent": 5
+    },
+    {
+      "min": 25,
+      "percent": 10
+    },
+    {
+      "min": 50,
+      "percent": 15
+    }
+  ],
+  "models": {
+    "create": 235,
+    "make": 475,
+    "little": 210,
+    "snoopy": 475,
+    "batman": 475,
+    "porsche": 475,
+    "perfect": 235,
+    "formula": 475,
+    "crossword": 235,
+    "love": 235,
+    "moldova": 235
+  }
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "snoopy",
+    "product": "hoodie",
+    "title": "Snoopy, cu drag",
+    "name": {
+      "ro": "Snoopy, cu drag",
+      "ru": "Снупи с любовью"
+    },
+    "description": {
+      "ro": "Model din colecția Printio. Alege culoarea și mărimea; confirmăm detaliile înainte de imprimare.",
+      "ru": "Модель из коллекции Printio. Выберите цвет и размер; мы уточним детали перед печатью."
+    },
+    "image": "/assets/snoopy.jpg"
+  },
+  {
+    "id": "batman",
+    "product": "hoodie",
+    "title": "Eroul din tine",
+    "name": {
+      "ro": "Eroul din tine",
+      "ru": "Твой внутренний герой"
+    },
+    "description": {
+      "ro": "Model din colecția Printio. Alege culoarea și mărimea; confirmăm detaliile înainte de imprimare.",
+      "ru": "Модель из коллекции Printio. Выберите цвет и размер; мы уточним детали перед печатью."
+    },
+    "image": "/assets/batman.jpg"
+  },
+  {
+    "id": "porsche",
+    "product": "hoodie",
+    "title": "Dream car club",
+    "name": {
+      "ro": "Dream car club",
+      "ru": "Клуб авто мечты"
+    },
+    "description": {
+      "ro": "Model din colecția Printio. Alege culoarea și mărimea; confirmăm detaliile înainte de imprimare.",
+      "ru": "Модель из коллекции Printio. Выберите цвет и размер; мы уточним детали перед печатью."
+    },
+    "image": "/assets/porsche.jpg"
+  },
+  {
+    "id": "perfect",
+    "product": "tshirt",
+    "title": "Nobody’s perfect",
+    "name": {
+      "ro": "Nobody’s perfect",
+      "ru": "Никто не идеален"
+    },
+    "description": {
+      "ro": "Model din colecția Printio. Alege culoarea și mărimea; confirmăm detaliile înainte de imprimare.",
+      "ru": "Модель из коллекции Printio. Выберите цвет и размер; мы уточним детали перед печатью."
+    },
+    "image": "/assets/perfect.jpg"
+  },
+  {
+    "id": "formula",
+    "product": "hoodie",
+    "title": "Pole position",
+    "name": {
+      "ro": "Pole position",
+      "ru": "Поул-позиция"
+    },
+    "description": {
+      "ro": "Model din colecția Printio. Alege culoarea și mărimea; confirmăm detaliile înainte de imprimare.",
+      "ru": "Модель из коллекции Printio. Выберите цвет и размер; мы уточним детали перед печатью."
+    },
+    "image": "/assets/formula.jpg"
+  },
+  {
+    "id": "crossword",
+    "product": "tshirt",
+    "title": "Povestea noastră",
+    "name": {
+      "ro": "Povestea noastră",
+      "ru": "Наша история"
+    },
+    "description": {
+      "ro": "Model din colecția Printio. Alege culoarea și mărimea; confirmăm detaliile înainte de imprimare.",
+      "ru": "Модель из коллекции Printio. Выберите цвет и размер; мы уточним детали перед печатью."
+    },
+    "image": "/assets/crossword.jpg"
+  },
+  {
+    "id": "love",
+    "product": "tshirt",
+    "title": "Love, in every detail",
+    "name": {
+      "ro": "Love, in every detail",
+      "ru": "Любовь в деталях"
+    },
+    "description": {
+      "ro": "Model din colecția Printio. Alege culoarea și mărimea; confirmăm detaliile înainte de imprimare.",
+      "ru": "Модель из коллекции Printio. Выберите цвет и размер; мы уточним детали перед печатью."
+    },
+    "image": "/assets/love.jpg"
+  },
+  {
+    "id": "moldova",
+    "product": "tshirt",
+    "title": "Made of Moldova",
+    "name": {
+      "ro": "Made of Moldova",
+      "ru": "Сделано из Молдовы"
+    },
+    "description": {
+      "ro": "Model din colecția Printio. Alege culoarea și mărimea; confirmăm detaliile înainte de imprimare.",
+      "ru": "Модель из коллекции Printio. Выберите цвет и размер; мы уточним детали перед печатью."
+    },
+    "image": "/assets/moldova.jpg"
+  }
+]

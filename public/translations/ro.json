@@ -1,0 +1,193 @@
+{
+  "home": "Acasă",
+  "products": "Produse",
+  "designer": "Personalizează",
+  "models": "Modele",
+  "technology": "Tehnologie",
+  "care": "Îngrijire",
+  "faq": "Întrebări",
+  "contact": "Contact",
+  "cart": "Coș",
+  "top": "PRODUSE PERSONALIZATE · REPUBLICA MOLDOVA",
+  "heroKicker": "MIC ATELIER. IDEI MARI. MOLDOVA.",
+  "heroTitle": "Idei de purtat. Exact ca tine.",
+  "heroText": "Un gând, o pasiune, o poveste a voastră. Le transformăm în tricouri și hanorace pe care abia aștepți să le porți.",
+  "start": "Creează designul tău",
+  "viewModels": "Vezi modelele",
+  "stamp": "DESIGNUL ÎNCEPE AICI",
+  "how": "Cum funcționează",
+  "steps": [
+    "Alege produsul",
+    "Construiește designul",
+    "Vezi estimarea",
+    "Confirmăm împreună"
+  ],
+  "stepText": [
+    "Tricouri, polo, hanorace și accesorii.",
+    "Text sau imagine pe față și pe spate.",
+    "Preț orientativ, calculat pe loc.",
+    "Te contactăm prin telefon sau mesaj."
+  ],
+  "category": "Alege pe ce imprimăm",
+  "categoryText": "Fiecare produs are propria zonă de print și propriul preț de bază.",
+  "from": "de la",
+  "customize": "Personalizează",
+  "ready": "Găsește ceva de-al tău.",
+  "readyText": "Pentru pasiunile tale. Pentru oamenii tăi. Sau pur și simplu pentru tine.",
+  "fixed": "Model gata creat",
+  "choose": "Alege modelul",
+  "allModels": "Toate modelele",
+  "why": "Creat de tine, imprimat cu grijă.",
+  "whyText": "Personalizăm prin transfer termic cu presă. Poți încărca grafica ta sau poți construi un design direct în editor.",
+  "learn": "Despre imprimare",
+  "footer": "Produse personalizate în Republica Moldova. Fiecare cerere se confirmă prin telefon sau mesaj.",
+  "information": "Informații",
+  "demo": "Prețuri demonstrative. Tarifele finale se stabilesc la confirmare.",
+  "designTitle": "Construiește produsul tău",
+  "designText": "Alege baza, apoi așază textul și imaginile în zona permisă.",
+  "baseStep": "01 / PRODUS",
+  "product": "Produs",
+  "color": "Culoare",
+  "size": "Mărime",
+  "quantity": "Cantitate",
+  "toolsStep": "02 / ADAUGĂ DESIGN",
+  "addText": "Adaugă text",
+  "upload": "Încarcă imagine",
+  "uploadHint": "PNG, JPG sau WEBP · maximum 8 MB",
+  "front": "Față",
+  "back": "Spate",
+  "zone": "ZONA DE PRINT",
+  "move": "Trage elementele pentru a le poziționa.",
+  "selected": "ELEMENT SELECTAT",
+  "yourText": "Textul tău",
+  "textColor": "Culoarea textului",
+  "width": "Lățime",
+  "height": "Înălțime",
+  "rotation": "Rotație",
+  "horizontal": "Poziție orizontală",
+  "vertical": "Poziție verticală",
+  "delete": "Șterge elementul",
+  "layers": "Elemente pe această parte",
+  "noLayers": "Adaugă text sau o imagine ca să începi.",
+  "estimate": "Estimare de preț",
+  "basePrice": "Produs de bază",
+  "textPrice": "Text imprimat",
+  "imagePrice": "Imagine imprimată",
+  "unit": "Preț / bucată",
+  "discount": "Reducere cantitate",
+  "total": "Total estimativ",
+  "addCart": "Adaugă la cerere",
+  "limit": "Zona de print este orientativă. Dimensiunea finală va fi confirmată înainte de producție.",
+  "uploadError": "Imaginea nu a putut fi încărcată. Încearcă din nou.",
+  "uploading": "Se încarcă imaginea…",
+  "lowRes": "Rezoluția imaginii poate fi prea mică. O vom verifica la confirmare.",
+  "reset": "Pornește un design nou",
+  "orderTitle": "Verifică cererea",
+  "orderText": "Lasă datele tale. Te contactăm pentru a verifica grafica și prețul final.",
+  "empty": "Cererea este goală.",
+  "name": "Numele tău",
+  "phone": "Număr de telefon",
+  "method": "Cum preferi să te contactăm?",
+  "call": "Telefon",
+  "message": "Mesaj",
+  "notes": "Detalii suplimentare",
+  "send": "Trimite cererea",
+  "sending": "Se trimite…",
+  "success": "Cererea a fost înregistrată",
+  "successText": "Te vom contacta pentru confirmarea designului și a prețului final.",
+  "reference": "Număr cerere",
+  "orderError": "Cererea nu a putut fi trimisă. Datele tale au rămas în formular; încearcă din nou.",
+  "remove": "Elimină",
+  "techTitle": "Cum imprimăm",
+  "techText": "Folosim transfer termic cu presă. Grafica este pregătită pentru produs, poziționată în zona permisă, apoi transferată cu căldură și presiune.",
+  "techCards": [
+    [
+      "01 / Pregătire",
+      "Verificăm fișierul, mărimea și poziția designului."
+    ],
+    [
+      "02 / Transfer",
+      "Aplicăm designul cu presa termică potrivită materialului."
+    ],
+    [
+      "03 / Confirmare",
+      "Înainte de producție stabilim împreună detaliile finale."
+    ]
+  ],
+  "careTitle": "Îngrijirea produsului",
+  "careText": "Instrucțiuni generale pentru păstrarea printului. Recomandările exacte pot varia în funcție de materialele și consumabilele folosite.",
+  "careCards": [
+    [
+      "Spală pe dos",
+      "Întoarce articolul înainte de spălare și alege un program delicat."
+    ],
+    [
+      "Evită căldura directă",
+      "Nu călca direct peste print. Dacă este necesar, calcă pe dos."
+    ],
+    [
+      "Usucă natural",
+      "Evită uscarea intensă la temperaturi înalte."
+    ]
+  ],
+  "faqTitle": "Întrebări frecvente",
+  "questions": [
+    [
+      "Pot adăuga text și imagine împreună?",
+      "Da. Le poți combina pe aceeași parte sau le poți împărți între față și spate."
+    ],
+    [
+      "Este prețul din constructor final?",
+      "Nu. Valorile din această versiune sunt demonstrative. Prețul final se confirmă după verificarea designului, produsului și cantității."
+    ],
+    [
+      "Cum confirm comanda?",
+      "Trimite cererea cu numărul tău de telefon și alege apel sau mesaj."
+    ],
+    [
+      "Cât de mare poate fi printul?",
+      "Aproximativ 80% din zona utilă, în funcție de produs. Pe spate păstrăm mai mult spațiu liber în partea de jos."
+    ]
+  ],
+  "contactTitle": "Hai să discutăm despre designul tău",
+  "contactText": "Pregătește un produs în constructor și trimite cererea. Îți vom răspunde prin metoda de contact aleasă.",
+  "contactMissing": "Numărul public de telefon și linkurile Instagram/TikTok vor fi adăugate după configurarea afacerii.",
+  "photosMissing": "Fotografiile reale ale modelelor vor fi adăugate ulterior.",
+  "notFound": "Pagina nu a fost găsită.",
+  "details": "Alege culoarea și mărimea în constructor. Prețul se actualizează după design.",
+  "elements": "elemente",
+  "heroLineOne": "Idei de purtat.",
+  "heroLineTwo": "Exact ca tine.",
+  "heroFoot": "Făcut pentru tine. Confirmat împreună.",
+  "heroNote": "un pic de tine, în fiecare print",
+  "stampTop": "PERSONALIZAT",
+  "stampBottom": "CU PERSONALITATE",
+  "collection": "COLECȚIA PRINTIO",
+  "promises": [
+    "Designul tău, regulile tale",
+    "Print prin transfer termic",
+    "De la o singură bucată",
+    "Creat în Moldova"
+  ],
+  "customKicker": "TU ADUCI IDEEA. NOI, PRINTUL.",
+  "stepsTitle": "De la „ce-ar fi dacă” la „e al meu”.",
+  "stepsIntro": "Patru pași simpli. O idee care prinde formă.",
+  "all": "Toate modelele",
+  "search": "Caută un model",
+  "noResults": "Nu am găsit modele. Încearcă altă căutare.",
+  "close": "Închide",
+  "snoopyAlt": "Hanorace albe cu model Snoopy pentru cupluri",
+  "priceConfirmation": "Preț estimativ. Confirmăm detaliile înainte de producție.",
+  "colorNames": {
+    "#f1f0eb": "Alb crem",
+    "#202633": "Negru",
+    "#376090": "Albastru",
+    "#c9a186": "Bej",
+    "#e9dfcd": "Natur"
+  },
+  "layerLimit": "Poți adăuga maximum 24 de elemente pe un produs.",
+  "about": "Despre Printio",
+  "aboutText": "Un atelier pentru ideile care merită purtate. Personalizăm tricouri, hanorace și accesorii în Republica Moldova.",
+  "contactFallback": "Trimite cererea din coș și lasă-ne numărul tău. Revenim pentru a discuta toate detaliile.",
+  "delivery": "Livrare"
+}

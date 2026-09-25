@@ -1,0 +1,66 @@
+[build]
+  publish = "public"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "same-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+    Strict-Transport-Security = "max-age=31536000"
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
+[[redirects]]
+  from = "/produse"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/produse/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/constructor"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/modele"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tehnologie"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/ingrijire"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/intrebari"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/despre"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/cerere"
+  to = "/index.html"
+  status = 200

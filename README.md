@@ -1,103 +1,51 @@
-# Printio — magazin și administrare
+# Printio — magazin static pentru Netlify
 
-Magazin pentru Moldova, cu interfață RO/RU, MDL, editor față/spate, coș, cereri de comandă și admin. Aspectul urmează brandbook-ul, iar modelele folosesc fotografiile furnizate. Originalele din `printio temp` au rămas intacte.
+Magazinul Printio are catalog RO/RU, constructor cu design separat pe față și spate, coș și formular de cerere. Varianta publicată pe Netlify rulează din fișierele din `public/`, fără Node.js sau bază de date pe server. `netlify.toml` publică numai acest director și configurează rutele site-ului.
 
-## Pornire
+## Publicare pe Netlify
 
-Necesită **Node.js 24+**, fără pachete suplimentare.
+1. Conectează repository-ul GitHub la un site Netlify. Directorul de publicare este `public`; nu este necesară comandă de build.
+2. În Netlify, activează **Forms / Form detection** și declanșează un deploy nou. Formularul `printio-order` este definit în `public/index.html`; Netlify trebuie să îl detecteze la deploy.
+3. Înainte de a primi cereri reale, completează tarifele din `public/config/prices.json` și setează `demo` la `false`. Verifică datele de contact și livrare din `public/config/business.json` și zonele de print din `public/config/print-areas.json`.
+4. Trimite o cerere de test de pe domeniul Netlify și verifică apariția ei în **Netlify → Forms → printio-order**, inclusiv imaginile atașate. Prețul trimis este o estimare; confirmă manual produsul, grafica și tariful cu clientul.
 
-```powershell
-cd C:\printio.md
-node --env-file-if-exists=.env server.mjs
-```
+Pe site-ul static, fotografiile încărcate în constructor sunt păstrate local în browser până la trimiterea cererii, apoi sunt atașate formularului Netlify. Sunt acceptate cel mult șase imagini distincte per cerere și un total de aproximativ 7,5 MB pentru cerere. Nu șterge datele browserului înainte de trimitere. Formularul afișează o eroare dacă un fișier local nu mai este disponibil.
 
-Alternativ: dublu clic pe **START-PRINTIO.cmd**, sau `npm start` dacă ai npm. Păstrează terminalul deschis.
-
-- Magazin: http://localhost:3000
-- Admin: http://localhost:3000/admin
-- Parola inițială este generată aleatoriu la prima pornire în **data/admin-access.txt**. Acest fișier nu poate fi accesat prin site.
-- Pentru schimbarea parolei, copiază `.env.example` în `.env`, completează `ADMIN_PASSWORD` (minimum 12 caractere) și repornește serverul. După schimbare folosește parola nouă; fișierul inițial de acces nu se rescrie.
+Pagina `/admin` explică fluxul static. Comenzile se consultă în contul Netlify, iar statisticile în Netlify Analytics, dacă este activat. Panoul Printio cu statusuri, editare în browser și grafice necesită backendul Node; o pagină statică nu poate proteja o parolă de administrator sau păstra comenzi într-o bază de date privată.
 
 ## Adăugarea produselor
 
-1. Intră în admin → **Adaugă produs**.
-2. Trage o imagine în zona punctată sau selecteaz-o: JPG, PNG, WEBP, maximum 8 MB.
-3. Alege **Model gata creat** pentru un design cu preț fix sau **Produs de personalizat** pentru o bază nouă disponibilă în editor.
-4. Completează numele RO/RU, descrierile și prețul în MDL.
-5. Pentru model, alege produsul de bază de la care se preiau mărimile și culorile. Pentru o bază nouă, completează variantele și alege șablonul zonei de print.
-6. Salvează. Produsul apare la următoarea încărcare a catalogului public.
-
-În **Produse → Editează** poți modifica fotografia, textele, prețul și variantele. Pentru bazele inițiale fără fotografie, adaugă una la prima editare din admin. Produsele și comenzile nu se șterg automat.
-
-## Comenzi și statistici
-
-Clientul alege mărimea, culoarea și cantitatea, apoi trimite numele, telefonul, preferința de contact și observațiile. Serverul validează datele și **recalculează prețul**, ignorând totalurile furnizate de browser.
-
-Comanda începe ca **De confirmat**. În admin poți alege Confirmată, În producție, Finalizată sau Anulată. Detaliile păstrează varianta, numele și prețul de la plasarea cererii. Pentru personalizări se salvează textele, culorile, părțile, coordonatele, dimensiunile relative, rotația și imaginile originale.
-
-Dashboardul arată cererile, cele de confirmat, valoarea estimativă fără anulări, vizualizările și paginile accesate. Valoarea nu reprezintă încasări; vizualizările nu sunt vizitatori unici. Sunt numărate și vizitele proprii. Nu se stochează IP-uri sau identificatori individuali în statistici. Dashboardul și comenzile se actualizează la 30 de secunde când sunt vizibile; lista are și actualizare manuală, căutare și filtru de status.
-
-Nu se procesează plăți și nu se trimit automat SMS-uri sau e-mailuri. Confirmarea cu clientul este manuală.
-
-## Configurări
+Pentru un model gata creat, adaugă imaginea în `public/assets/`, apoi o intrare în `public/config/models.json` și prețul aferent în `public/config/prices.json` la `models`. Pentru un produs de personalizat, adaugă imaginile față/spate în `public/assets/`, produsul în `public/config/products.json`, zona de print în `public/config/print-areas.json` și prețul de bază în `public/config/prices.json`. Folosește un ID unic și păstrează numele și descrierea în `ro` și `ru`. Publică modificările prin GitHub; Netlify va face un deploy nou.
 
 | Fișier | Conținut |
-|---|---|
-| `config/prices.json` | Prețuri de bază, text, imagini, reduceri de cantitate, prețuri modele |
-| `config/products.json` | Bazele inițiale, mărimi, culori, părți |
-| `config/models.json` | Modelele inițiale și fotografiile |
-| `config/print-areas.json` | Zone orientative în procente și centimetri |
-| `config/business.json` | Telefon, e-mail, Instagram, TikTok, program, livrare RO/RU |
-| `config/promotions.json` | Structură pentru promoții viitoare |
-| `public/translations/ro.json`, `ru.json` | Textele magazinului |
+| --- | --- |
+| `public/config/products.json` | Produse de personalizat, mărimi, culori, imagini față/spate |
+| `public/config/models.json` | Modele gata create și imagini |
+| `public/config/prices.json` | Prețuri și reduceri de cantitate |
+| `public/config/print-areas.json` | Zonele orientative de imprimare |
+| `public/config/business.json` | Contact, program și livrare |
+| `public/config/promotions.json` | Structură pentru promoții viitoare |
+| `public/translations/` | Texte RO/RU |
 
-Produsele salvate din admin sunt în SQLite și au prioritate față de JSON pentru același ID. Modifică prețurile lor din admin.
+Editorul salvează poziția, dimensiunea, rotația și partea fiecărui element. Previzualizarea și zona de print sunt orientative; nu produc automat un fișier pentru imprimare.
 
-**Înainte de publicare:** completează tarifele reale și setează `demo: false` în `config/prices.json`; completează contactele și livrarea în `config/business.json`; confirmă zonele de print și instrucțiunile de îngrijire. Bazele fără fotografii sunt afișate schematic.
+## Verificare locală fără Node.js
 
-Reducerile de cantitate pentru produsele personalizate funcționează. Codurile promoționale, combo-urile și cadourile sunt extensii viitoare; activarea exemplului din `promotions.json` nu aplică o ofertă. Modelele gata create au preț fix per bucată. Nu se deschid cu grafica preîncărcată în editor, deoarece materialele furnizate sunt fotografii, nu grafici de print separate.
-
-## Implementare
-
-Am extins baza existentă în **HTML/CSS/JavaScript și Node.js nativ**, cu pornire fără dependențe. Această versiune **nu migrează la React/TypeScript/Express**. SQLite folosește `node:sqlite` din Node 24.
-
-```text
-public/app.js                Magazin, navigare, coș și editor
-public/styles.css           Stiluri de bază
-public/printio.css           Design Printio și responsive
-public/admin.html/js/css     Panou de administrare
-public/pricing.mjs          Calculator comun browser + server
-public/translations/       Texte RO/RU
-public/assets/             Copii optimizate ale materialelor
-server.mjs                 HTTP, API, autentificare, validări
-storage.mjs                SQLite, parole și statistici
-data/printio.sqlite         Comenzi, produse admin, statistici
-data/uploads/              Fotografii și imagini încărcate
-tests/api.test.mjs          Teste de integrare
-```
-
-Editorul folosește elemente DOM poziționate, cu glisare, rotație și redimensionare, limitate vizual la zona de print. Previzualizarea este orientativă; nu generează automat un fișier de producție. Comenzile vechi din `data/orders.json`, dacă există, se importă în SQLite pe ID, fără a șterge originalul.
-
-## Verificare
+Servește directorul `public/` printr-un server static. De exemplu, dacă Python este instalat:
 
 ```powershell
+python -m http.server 3100 --bind 127.0.0.1 --directory public
+```
+
+Deschide `http://localhost:3100/`. Catalogul, constructorul și coșul funcționează local. Trimiterea cererilor este blocată intenționat pe localhost, pentru a evita o confirmare falsă; testeaz-o după deploy pe Netlify. Un server static simplu poate răspunde cu 404 la reîncărcarea directă a `/constructor`; regulile de rutare din `netlify.toml` rezolvă acest lucru pe Netlify. Deschiderea `index.html` direct prin `file://` nu este suportată de modulele JavaScript și încărcarea JSON.
+
+## Backendul Node opțional
+
+Pentru panoul Printio complet, pornește `server.mjs` cu Node.js 24+. Acesta folosește aceleași fișiere din `public/config/`, dar stochează comenzile, produsele adăugate din admin și statisticile în SQLite. Backendul nu rulează pe Netlify în această configurare.
+
+```powershell
+node --env-file-if-exists=.env server.mjs
 node --test tests/api.test.mjs
 ```
 
-Cele șase teste de integrare verifică autentificarea, accesul neautorizat, cross-origin, prețurile recalculate, variantele, personalizările, imaginile, editarea produselor, statusurile, statisticile și persistența după repornire. Rulează pe portul 3197 într-un director temporar separat, pe care îl curăță după test.
-
-Verificări în browser: căutare, selectarea variantelor, trimiterea cererii, autentificare admin, detalii și status, încărcarea fotografiei, produs nou în catalogul rusesc. Datele de verificare au fost păstrate separat de magazin.
-
-## Publicare și backup
-
-`netlify.toml` publică numai `public/`, setează antetele CSP/HTTPS și rutele vizibile ale magazinului. Astfel parola, SQLite, sursa serverului și comenzile din rădăcina proiectului nu ajung în publish-ul Netlify.
-
-**Limita importantă:** Netlify publică aici doar frontendul. Nu rulează `server.mjs`; comenzile, autentificarea adminului, încărcările și API-ul încă au nevoie de acest server. Înainte de a accepta cereri reale, mută backendul pe un host Node 24 cu disc persistent/SQLite, setează domeniul API în frontend și `HOST=0.0.0.0`, `COOKIE_SECURE=true` și parola admin prin secret manager. Nu considera doar `publish = "public"` o migrare a backendului.
-
-Proiectul primit în acest director nu are `.git` sau remote Git configurat. Prin urmare, `git push` nu poate fi executat din acest checkout fără URL-ul repository-ului și istoricul sursă. Setarea `.gitignore` împiedică includerea bazei și a parolei la un push viitor; ea nu șterge obiecte dintr-un remote sau din istoricul Git. Dacă versiuni anterioare au fost publicate, rotește parola expusă din panoul Netlify și păstrează datele reale în afara repository-ului înainte de următorul deploy.
-
-Site-ul de dezvoltare rulează local; nu am publicat schimbări pe site-ul de producție. Ai nevoie de hosting Node 24 cu disc persistent și HTTPS. La găzduire setează `HOST=0.0.0.0`, `COOKIE_SECURE=true` și o parolă admin prin configurarea securizată a gazdei. Local, serverul ascultă implicit doar pe `127.0.0.1`.
-
-Parolele sunt hash scrypt cu salt; sesiunile folosesc cookie HttpOnly/SameSite, expiră în 8 ore și se invalidează la repornire. Autentificarea limitează încercările. Nu publica `data`, `.env` sau `admin-access.txt` printr-un server static.
-
-Pentru backup, oprește serverul și copiază **întregul director data**, plus `config` și `public/assets`. Cât timp serverul rulează, folosește un backup SQLite consistent, care ține cont de jurnalul WAL. Instalarea este pentru un singur proces Node și un singur administrator; rolurile multiple și notificările necesită extindere.
+Serverul local este disponibil la `http://localhost:3000/`, iar adminul la `/admin`. La prima pornire, parola inițială este generată în `data/admin-access.txt`. Pentru schimbare, configurează `ADMIN_PASSWORD` în `.env` conform `.env.example`. Nu publica `data/`, `.env` sau fișierul cu parola; `netlify.toml` le exclude prin publicarea exclusivă a directorului `public/`.

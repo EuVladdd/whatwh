@@ -8,10 +8,19 @@
   <title>Printio — idei de purtat — produse personalizate</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
-  <script type="module" src="/app.js?v=4"></script>
-  <link rel="stylesheet" href="/printio.css?v=4">
+  <script type="module" src="/app.js?v=5"></script>
+  <link rel="stylesheet" href="/printio.css?v=5">
 </head>
 <body>
   <div id="app"><p class="loading">Se încarcă site-ul…</p></div>
+  <form name="printio-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" class="netlify-form-blueprint" aria-hidden="true">
+    <input type="hidden" name="form-name" value="printio-order">
+    <input name="bot-field"><input name="reference"><input name="name"><input name="phone">
+    <input name="method"><input name="notes"><input name="lang"><input name="estimated_total">
+    <textarea name="order_summary"></textarea>
+    <input type="file" name="artwork_1"><input type="file" name="artwork_2">
+    <input type="file" name="artwork_3"><input type="file" name="artwork_4">
+    <input type="file" name="artwork_5"><input type="file" name="artwork_6">
+  </form>
 </body>
 </html>

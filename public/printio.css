@@ -10,3 +10,4 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}h1,h2,h3{font
 @media(max-width:500px){.presentation-sides{gap:4px}.presentation-garment{width:132px;height:175px}}
 .product-catalog-tools{flex-wrap:wrap}.product-catalog-tools input{min-width:220px;flex:1;max-width:320px}.size-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.size-guide-grid .info-card{min-height:180px}.size-guide-note{margin:22px 0}.size-guide-link{margin:10px 0 18px;font-size:13px;font-weight:700}.size-guide-link a{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:760px){.size-guide-grid{grid-template-columns:1fr}.size-guide-grid .info-card{min-height:0}.product-catalog-tools input{max-width:none}}
+.netlify-form-blueprint{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

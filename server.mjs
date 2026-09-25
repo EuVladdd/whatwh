@@ -20,7 +20,7 @@ const maxOrderBytes = 1024 * 1024;
 const maxUploadBody = 11 * 1024 * 1024;
 const files = {products:'products.json',prices:'prices.json',areas:'print-areas.json',models:'models.json',promotions:'promotions.json',business:'business.json'};
 const loadConfig = async () => {
- const c=Object.fromEntries(await Promise.all(Object.entries(files).map(async ([key,file]) => [key, JSON.parse(await readFile(join(ROOT,'config',file),'utf8'))])));
+ const c=Object.fromEntries(await Promise.all(Object.entries(files).map(async ([key,file]) => [key, JSON.parse(await readFile(join(PUBLIC,'config',file),'utf8'))])));
  for(const p of store.catalog()) {
    if(p.kind==='base') {c.products=c.products.filter(v=>v.id!==p.id);c.products.push(p);c.prices.base[p.id]=p.price;c.areas[p.id]=c.areas[p.template]||c.areas.tshirt;}
    else {c.models=c.models.filter(v=>v.id!==p.id);c.models.push(p);c.prices.models[p.id]=p.price;}

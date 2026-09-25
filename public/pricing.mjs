@@ -1,4 +1,4 @@
-/** Calculator unic, folosit de browser și de server. Valorile vin din config/prices.json. */
+/** Calculator unic, folosit de browser și de server. Valorile vin din public/config/prices.json. */
 export function calculatePrice(design, config) {
   const {prices, areas} = config;
   const base = prices.base[design.product];

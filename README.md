@@ -29,6 +29,12 @@ Pentru un model gata creat, adaugă imaginea în `public/assets/`, apoi o intrar
 
 Editorul salvează poziția, dimensiunea, rotația și partea fiecărui element. Previzualizarea și zona de print sunt orientative; nu produc automat un fișier pentru imprimare.
 
+### Dificultatea designului în estimare
+
+`public/config/prices.json` conține secțiunea `difficulty`. Scorul crește pentru elemente suplimentare, imprimare pe a doua parte, rotații de cel puțin `rotationThreshold` grade și imagini marcate drept grafică detaliată. Pragurile `tiers` stabilesc o taxă de pregătire `setup` aplicată o singură dată per design și un cost `perUnit` pentru fiecare bucată. Reducerile de cantitate se aplică la subtotalul de producție, apoi se adaugă pregătirea. Modifică valorile din JSON pentru a calibra tarifele; cât timp `demo` este `true`, toate sumele rămân demonstrative și se confirmă manual.
+
+Pentru varianta WordPress.com, paginile pregătite și pașii de integrare sunt în `wordpress/`. Site-ul WordPress.com Free nu permite instalarea pluginurilor WooCommerce și TShirt eCommerce; până la un plan compatibil, butonul de personalizare deschide constructorul Printio găzduit separat.
+
 ## Verificare locală fără Node.js
 
 Servește directorul `public/` printr-un server static. De exemplu, dacă Python este instalat:

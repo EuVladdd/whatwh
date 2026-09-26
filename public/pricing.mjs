@@ -15,9 +15,21 @@ export function calculatePrice(design, config) {
     }
     if (layer.type === 'image') image += prices.image.base + widthCm * heightCm * prices.image.perSquareCm;
   }
-  const unit = Math.round(base + text + image);
+  const active = design.layers.filter(l => l.type === 'image' || (l.type === 'text' && l.text.trim()));
+  const sides = new Set(active.map(l => l.side));
+  const rules = prices.difficulty;
+  const score = Math.max(0, active.length - 1) * rules.extraLayerPoints
+    + Math.max(0, sides.size - 1) * rules.extraSidePoints
+    + active.filter(l => l.type === 'image' && l.detail === 'detailed').length * rules.detailedImagePoints
+    + active.filter(l => Math.abs(l.rotation) >= rules.rotationThreshold).length * rules.rotationPoints;
+  const tier = [...rules.tiers].reverse().find(t => score >= t.minScore) ?? rules.tiers[0];
+  const difficultyUnit = active.length ? tier.perUnit : 0;
+  const difficultySetup = active.length ? tier.setup : 0;
+  const unit = Math.round(base + text + image + difficultyUnit);
   const quantity = design.quantity;
   const discount = [...prices.quantityDiscounts].reverse().find(x => quantity >= x.min)?.percent ?? 0;
   const subtotal = unit * quantity;
-  return {base, text:Math.round(text), image:Math.round(image), unit, quantity, discount, subtotal, total:Math.round(subtotal * (1 - discount / 100))};
+  return {base, text:Math.round(text), image:Math.round(image), difficultyLevel:tier.id,
+    difficultyScore:score, difficultyUnit, difficultySetup, unit, quantity, discount, subtotal,
+    total:Math.round(subtotal * (1 - discount / 100) + difficultySetup)};
 }

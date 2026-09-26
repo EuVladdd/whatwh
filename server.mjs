@@ -44,7 +44,7 @@ function validateDesign(d,config) {
   return d.layers.every(l=>{
     if(!l || typeof l!=='object' || !['text','image'].includes(l.type) || !product.sides.includes(l.side) || typeof l.id!=='string' || l.id.length>80)return false;
     if(![l.x,l.y,l.width,l.height,l.rotation].every(Number.isFinite) || l.width<5 || l.width>100 || l.height<5 || l.height>100 || l.x<0 || l.y<0 || l.x+l.width>100.001 || l.y+l.height>100.001 || Math.abs(l.rotation)>180)return false;
-    return l.type==='text' ? typeof l.text==='string' && l.text.length<=150 && typeof l.color==='string' && /^#[0-9a-fA-F]{6}$/.test(l.color) : typeof l.imageId==='string' && /^[0-9a-f-]{36}\.(png|jpg|webp)$/.test(l.imageId);
+    return l.type==='text' ? typeof l.text==='string' && l.text.length<=150 && typeof l.color==='string' && /^#[0-9a-fA-F]{6}$/.test(l.color) : typeof l.imageId==='string' && /^[0-9a-f-]{36}\.(png|jpg|webp)$/.test(l.imageId) && (l.detail===undefined || ['simple','detailed'].includes(l.detail));
   });
 }
 async function order(req,res){
@@ -55,7 +55,7 @@ async function order(req,res){
     if(!item || !Number.isInteger(item.quantity) || item.quantity<1 || item.quantity>500)return json(res,400,{error:'Invalid item'});
     if(item.kind==='custom' && validateDesign(item.design,config) && item.quantity===item.design.quantity){
       for(const layer of item.design.layers.filter(l=>l.type==='image')){try{await stat(join(UPLOADS,layer.imageId))}catch{return json(res,400,{error:'Image unavailable'})}}
-      const design={product:item.design.product,color:item.design.color,size:item.design.size,quantity:item.quantity,layers:item.design.layers.map(l=>l.type==='text'?{id:l.id,type:l.type,side:l.side,x:l.x,y:l.y,width:l.width,height:l.height,rotation:l.rotation,text:l.text,color:l.color}:{id:l.id,type:l.type,side:l.side,x:l.x,y:l.y,width:l.width,height:l.height,rotation:l.rotation,imageId:l.imageId})};
+      const design={product:item.design.product,color:item.design.color,size:item.design.size,quantity:item.quantity,layers:item.design.layers.map(l=>l.type==='text'?{id:l.id,type:l.type,side:l.side,x:l.x,y:l.y,width:l.width,height:l.height,rotation:l.rotation,text:l.text,color:l.color}:{id:l.id,type:l.type,side:l.side,x:l.x,y:l.y,width:l.width,height:l.height,rotation:l.rotation,detail:l.detail||'simple',imageId:l.imageId})};
       total+=calculatePrice(design,config).total;items.push({kind:'custom',quantity:item.quantity,design,name:config.products.find(p=>p.id===design.product).name,price:calculatePrice(design,config).total});
     }else if(item.kind==='model' && typeof item.modelId==='string'){
       if(!config.models.some(m=>m.id===item.modelId))return json(res,400,{error:'Unknown model'});

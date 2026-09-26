@@ -33,6 +33,18 @@
     "base": 65,
     "perSquareCm": 0.42
   },
+  "difficulty": {
+    "extraLayerPoints": 1,
+    "extraSidePoints": 2,
+    "detailedImagePoints": 2,
+    "rotationThreshold": 15,
+    "rotationPoints": 1,
+    "tiers": [
+      {"id":"simple","minScore":0,"setup":0,"perUnit":0},
+      {"id":"medium","minScore":2,"setup":35,"perUnit":12},
+      {"id":"complex","minScore":4,"setup":80,"perUnit":25}
+    ]
+  },
   "quantityDiscounts": [
     {
       "min": 10,

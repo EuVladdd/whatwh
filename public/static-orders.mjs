@@ -27,7 +27,7 @@ export async function submitStaticOrder({fields, cart, config, lang}) {
         width: layer.width, height: layer.height, rotation: layer.rotation,
         ...(layer.type === 'text'
           ? {text: layer.text, color: layer.color}
-          : {artworkField: 'artwork_' + (ids.indexOf(layer.imageId) + 1)})
+          : {detail: layer.detail || 'simple', artworkField: 'artwork_' + (ids.indexOf(layer.imageId) + 1)})
       }))
     }
     : {kind: 'model', modelId: item.modelId, size: item.size,

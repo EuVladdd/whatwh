@@ -20,6 +20,8 @@ export function createStorage(root) {
     status(id,status){return db.prepare('UPDATE orders SET status=? WHERE id=?').run(status,id).changes;},
     catalog(){return db.prepare('SELECT body FROM catalog').all().map(r=>JSON.parse(r.body));},
     saveProduct(p){db.prepare('INSERT OR REPLACE INTO catalog VALUES (?,?)').run(p.id,JSON.stringify(p));},
+    difficulty(){const row=db.prepare("SELECT value FROM settings WHERE key='difficulty'").get();return row?JSON.parse(row.value):null;},
+    saveDifficulty(value){db.prepare("INSERT OR REPLACE INTO settings VALUES ('difficulty',?)").run(JSON.stringify(value));},
     visit(path){db.prepare('INSERT INTO visits VALUES (?,?,1) ON CONFLICT(day,path) DO UPDATE SET views=views+1').run(new Date().toISOString().slice(0,10),path);},
     stats(){return db.prepare('SELECT day,SUM(views) AS views FROM visits GROUP BY day ORDER BY day DESC LIMIT 30').all();},
     pages(){return db.prepare('SELECT path,SUM(views) AS views FROM visits GROUP BY path ORDER BY views DESC LIMIT 10').all();}

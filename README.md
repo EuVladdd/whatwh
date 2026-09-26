@@ -33,6 +33,8 @@ Editorul salvează poziția, dimensiunea, rotația și partea fiecărui element.
 
 `public/config/prices.json` conține secțiunea `difficulty`. Scorul crește pentru elemente suplimentare, imprimare pe a doua parte, rotații de cel puțin `rotationThreshold` grade și imagini marcate drept grafică detaliată. Pragurile `tiers` stabilesc o taxă de pregătire `setup` aplicată o singură dată per design și un cost `perUnit` pentru fiecare bucată. Reducerile de cantitate se aplică la subtotalul de producție, apoi se adaugă pregătirea. Modifică valorile din JSON pentru a calibra tarifele; cât timp `demo` este `true`, toate sumele rămân demonstrative și se confirmă manual.
 
+În panoul `/admin` al variantei statice, formularul **Dificultatea designului** permite alegerea pragurilor și tarifelor și descărcarea unui fișier `prices.json` actualizat. Pentru aplicare, înlocuiește `public/config/prices.json` cu acel fișier și publică din nou prin GitHub/Netlify; formularul static nu poate modifica singur fișierele găzduite. În varianta cu backend Node, aceeași pagină este protejată de autentificare, iar **Salvează tarifele** aplică noile valori imediat și le păstrează în SQLite.
+
 Pentru varianta WordPress.com, paginile pregătite și pașii de integrare sunt în `wordpress/`. Site-ul WordPress.com Free nu permite instalarea pluginurilor WooCommerce și TShirt eCommerce; până la un plan compatibil, butonul de personalizare deschide constructorul Printio găzduit separat.
 
 ## Verificare locală fără Node.js

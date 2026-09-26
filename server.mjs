@@ -21,12 +21,21 @@ const maxUploadBody = 11 * 1024 * 1024;
 const files = {products:'products.json',prices:'prices.json',areas:'print-areas.json',models:'models.json',promotions:'promotions.json',business:'business.json'};
 const loadConfig = async () => {
  const c=Object.fromEntries(await Promise.all(Object.entries(files).map(async ([key,file]) => [key, JSON.parse(await readFile(join(PUBLIC,'config',file),'utf8'))])));
+ const difficulty=store.difficulty();if(difficulty)c.prices.difficulty=difficulty;
  for(const p of store.catalog()) {
    if(p.kind==='base') {c.products=c.products.filter(v=>v.id!==p.id);c.products.push(p);c.prices.base[p.id]=p.price;c.areas[p.id]=c.areas[p.template]||c.areas.tshirt;}
    else {c.models=c.models.filter(v=>v.id!==p.id);c.models.push(p);c.prices.models[p.id]=p.price;}
  }
  return c;
 };
+function validDifficulty(v){
+ if(!v || typeof v!=='object')return false;
+ for(const key of ['extraLayerPoints','extraSidePoints','detailedImagePoints','rotationPoints'])if(!Number.isInteger(v[key])||v[key]<0||v[key]>10)return false;
+ if(!Number.isInteger(v.rotationThreshold)||v.rotationThreshold<1||v.rotationThreshold>180)return false;
+ if(!Array.isArray(v.tiers)||v.tiers.length!==3)return false;
+ const ids=['simple','medium','complex'];
+ return v.tiers.every((t,i)=>t?.id===ids[i]&&Number.isInteger(t.minScore)&&t.minScore>=0&&t.minScore<=100&&(i===0?t.minScore===0:t.minScore>v.tiers[i-1].minScore)&&Number.isFinite(t.setup)&&t.setup>=0&&t.setup<=10000&&Number.isFinite(t.perUnit)&&t.perUnit>=0&&t.perUnit<=10000);
+}
 const json = (res,status,value) => {const body=JSON.stringify(value);res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(body)};
 const readJson = async (req,max) => {
   const type = req.headers['content-type'] || '';
@@ -102,6 +111,12 @@ http.createServer(async(req,res)=>{
       if(!authenticated)return json(res,401,{error:'Autentificare necesară.'});
       if(req.method==='POST' && path==='/api/admin/logout'){sessions.delete(sid);res.setHeader('Set-Cookie','printio_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0');return json(res,200,{ok:true});}
       if(req.method==='GET' && path==='/api/admin/dashboard')return json(res,200,{orders:store.orders(),visits:store.stats(),pages:store.pages(),config:await loadConfig()});
+      if(req.method==='POST' && path==='/api/admin/pricing'){
+        const body=await readJson(req,4096);
+        if(!validDifficulty(body?.difficulty))return json(res,400,{error:'Setări de dificultate invalide.'});
+        store.saveDifficulty(body.difficulty);
+        return json(res,200,{ok:true,difficulty:body.difficulty});
+      }
       if(req.method==='PATCH' && path.startsWith('/api/admin/orders/')){const b=await readJson(req,4096);if(!['pending_confirmation','confirmed','production','completed','cancelled'].includes(b.status))return json(res,400,{error:'Status invalid'});return json(res,store.status(path.split('/').at(-1),b.status)?200:404,{ok:true});}
       if(req.method==='POST' && path==='/api/admin/products'){
         const b=await readJson(req,20000);const c=await loadConfig();

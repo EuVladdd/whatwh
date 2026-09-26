@@ -4,7 +4,8 @@ import {submitStaticOrder} from './static-orders.mjs';
 
 const I=Object.fromEntries(await Promise.all(['ro','ru'].map(async l=>[l,await (await fetch('/translations/'+l+'.json',{cache:'no-store'})).json()])));
 const app=document.querySelector('#app');
-const state={config:null,mode:'server',artworkUrls:new Map(),lang:localStorage.getItem('atelier-lang')==='ru'?'ru':'ro',cart:readLocal('atelier-cart',[]),design:readLocal('atelier-design',null),side:'front',selected:null,error:'',warning:'',uploading:false,success:''};
+const requestedLang=new URLSearchParams(location.search).get('lang');
+const state={config:null,mode:'server',artworkUrls:new Map(),lang:['ro','ru'].includes(requestedLang)?requestedLang:localStorage.getItem('atelier-lang')==='ru'?'ru':'ro',cart:readLocal('atelier-cart',[]),design:readLocal('atelier-design',null),side:'front',selected:null,error:'',warning:'',uploading:false,success:''};
 function readLocal(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function money(n){return new Intl.NumberFormat('ro-MD').format(n)+' MDL'}
